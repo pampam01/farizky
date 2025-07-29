@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
                 ListTile(title: Text('Karlina Evi Pratiwi Limbong'), subtitle: Text('8030220035')),
                 ListTile(title: Text('Ferdi Anata'), subtitle: Text('8030220050')),
                 ListTile(title: Text('Aisyah Al Awa Diah'), subtitle: Text('8030220058')),
-                ListTile(title: Text('Raka Jumersyah Pratama'), subtitle: Text('80302220060')),
+                ListTile(title: Text('Raka Jumersyah Pratama'), subtitle: Text('8030220060')),
               ],
             ),
           ),
