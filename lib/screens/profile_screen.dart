@@ -4,6 +4,41 @@ import 'package:flutter/material.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
+  // --- FUNGSI BARU UNTUK MENAMPILKAN DIALOG TIM PENGEMBANG ---
+  void _showTeamDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Tim Pengembang'),
+          content: SizedBox(
+            width: double.maxFinite,
+            child: ListView(
+              shrinkWrap: true,
+              children: const [
+                ListTile(title: Text('Rizky Amalia Putri'), subtitle: Text('8030220018')),
+                ListTile(title: Text('Rofitaliza'), subtitle: Text('8030220027')),
+                ListTile(title: Text('Karlina Evi Pratiwi Limbong'), subtitle: Text('8030220035')),
+                ListTile(title: Text('Ferdi Anata'), subtitle: Text('8030220050')),
+                ListTile(title: Text('Aisyah Al Awa Diah'), subtitle: Text('8030220058')),
+                ListTile(title: Text('Raka Jumersyah Pratama'), subtitle: Text('80302220060')),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Tutup'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  // -----------------------------------------------------------
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -20,6 +55,16 @@ class ProfileScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _buildProfileMenu(context, title: 'Edit Profil', icon: Icons.edit, onTap: () {}),
           _buildProfileMenu(context, title: 'Riwayat Janji Temu', icon: Icons.history, onTap: () {}),
+          
+          // --- MENU BARU DITAMBAHKAN DI SINI ---
+          _buildProfileMenu(
+            context,
+            title: 'Tim Pengembang',
+            icon: Icons.group,
+            onTap: () => _showTeamDialog(context), // Memanggil dialog saat diklik
+          ),
+          // ------------------------------------
+
           _buildProfileMenu(context, title: 'Pengaturan', icon: Icons.settings, onTap: () {}),
           _buildProfileMenu(context, title: 'Pusat Bantuan', icon: Icons.help_outline, onTap: () {}),
           const Divider(),
@@ -41,7 +86,6 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        // Logika logout disini
                         Navigator.of(context).pop();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Anda telah berhasil logout')),
